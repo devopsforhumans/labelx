@@ -23,7 +23,7 @@ Label Creator for GitLab Projects.
 Features
 --------
 
-* TODO
+* Show package information
 
 Credits
 -------
