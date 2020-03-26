@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use labelxg in a project::
+To use labelx in a project::
 
-    import labelxg
+    import labelx

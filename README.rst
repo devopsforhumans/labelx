@@ -1,13 +1,13 @@
-=======
-labelxg
-=======
+======
+labelx
+======
 
 
-.. image:: https://img.shields.io/pypi/v/labelxg.svg
-        :target: https://pypi.python.org/pypi/labelxg
+.. image:: https://img.shields.io/pypi/v/labelx.svg
+        :target: https://pypi.python.org/pypi/labelx
 
-.. image:: https://readthedocs.org/projects/labelxg/badge/?version=latest
-        :target: https://labelxg.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/labelx/badge/?version=latest
+        :target: https://labelx.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 
@@ -17,7 +17,7 @@ Label Creator for GitLab Projects.
 
 
 * Free software: GNU General Public License v3
-* Documentation: https://labelxg.readthedocs.io.
+* Documentation: https://labelx.readthedocs.io.
 
 
 Features

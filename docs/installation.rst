@@ -8,13 +8,13 @@ Installation
 Stable release
 --------------
 
-To install labelxg, run this command in your terminal:
+To install labelx, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install labelxg
+    $ pip install labelx
 
-This is the preferred method to install labelxg, as it will always install the most recent stable release.
+This is the preferred method to install labelx, as it will always install the most recent stable release.
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.
@@ -26,19 +26,19 @@ you through the process.
 From sources
 ------------
 
-The sources for labelxg can be downloaded from the `Github repo`_.
+The sources for labelx can be downloaded from the `Github repo`_.
 
 You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/dalwar23/labelxg
+    $ git clone git://github.com/dalwar23/labelx
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl -OJL https://github.com/dalwar23/labelxg/tarball/master
+    $ curl -OJL https://github.com/dalwar23/labelx/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/dalwar23/labelxg
-.. _tarball: https://github.com/dalwar23/labelxg/tarball/master
+.. _Github repo: https://github.com/dalwar23/labelx
+.. _tarball: https://github.com/dalwar23/labelx/tarball/master

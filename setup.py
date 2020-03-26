@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """The setup script."""
 
@@ -10,23 +10,22 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = ['Click>=7.0', ]
+requirements = ["Click==7.1.1", "requests==2.22.0", "colorama==0.4.1", "pyyaml==5.1.1"]
 
-setup_requirements = [ ]
+setup_requirements = []
 
-test_requirements = [ ]
+test_requirements = []
 
 setup(
     author="Dalwar Hossain",
     author_email='dalwar23@protonmail.com',
-    python_requires='>=3.5',
+    python_requires='>=3.6',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
@@ -34,16 +33,16 @@ setup(
     description="Label Creator for GitLab Projects.",
     entry_points={
         'console_scripts': [
-            'labelxg=labelxg.cli:main',
+            'labelx=labelx.app:mission_control',
         ],
     },
     install_requires=requirements,
     license="GNU General Public License v3",
     long_description=readme + '\n\n' + history,
     include_package_data=True,
-    keywords='labelxg',
-    name='labelxg',
-    packages=find_packages(include=['labelxg', 'labelxg.*']),
+    keywords='labelx',
+    name='labelx',
+    packages=find_packages(include=['labelx', 'labelx.*']),
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
