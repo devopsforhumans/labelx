@@ -6,9 +6,6 @@ labelxg
 .. image:: https://img.shields.io/pypi/v/labelxg.svg
         :target: https://pypi.python.org/pypi/labelxg
 
-.. image:: https://img.shields.io/travis/dalwar23/labelxg.svg
-        :target: https://travis-ci.com/dalwar23/labelxg
-
 .. image:: https://readthedocs.org/projects/labelxg/badge/?version=latest
         :target: https://labelxg.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
