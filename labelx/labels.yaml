@@ -1,0 +1,113 @@
+---
+Bug:
+  color: "#FF0000"
+  description:
+  description_html: ''
+  text_color: "#FFFFFF"
+  subscribed: false
+  priority: 0
+  is_project_label: true
+Done:
+  color: "#0033CC"
+  description:
+  description_html: ''
+  text_color: "#FFFFFF"
+  subscribed: false
+  priority:
+  is_project_label: true
+Feature Upgrade:
+  color: "#AD4363"
+  description:
+  description_html: ''
+  text_color: "#FFFFFF"
+  subscribed: false
+  priority:
+  is_project_label: true
+Fixed:
+  color: "#69D100"
+  description:
+  description_html: ''
+  text_color: "#FFFFFF"
+  subscribed: false
+  priority:
+  is_project_label: true
+New Feature Request:
+  color: "#AD8D43"
+  description:
+  description_html: ''
+  text_color: "#FFFFFF"
+  subscribed: false
+  priority:
+  is_project_label: true
+On Hold:
+  color: "#D1D100"
+  description:
+  description_html: ''
+  text_color: "#FFFFFF"
+  subscribed: false
+  priority: 3
+  is_project_label: true
+P1:
+  color: "#FF80ED"
+  description: Priority 1
+  description_html: Priority 1
+  text_color: "#333333"
+  subscribed: false
+  priority: 5
+  is_project_label: true
+P2:
+  color: "#FFA500"
+  description: Priority 2
+  description_html: Priority 2
+  text_color: "#FFFFFF"
+  subscribed: false
+  priority: 6
+  is_project_label: true
+P3:
+  color: "#800080"
+  description: Priority 3
+  description_html: Priority 3
+  text_color: "#FFFFFF"
+  subscribed: false
+  priority: 7
+  is_project_label: true
+Planned:
+  color: "#fdfd96"
+  description:
+  description_html: ''
+  text_color: "#333333"
+  subscribed: false
+  priority:
+  is_project_label: true
+Source Code Refactoring:
+  color: "#428BCA"
+  description:
+  description_html: ''
+  text_color: "#FFFFFF"
+  subscribed: false
+  priority: 2
+  is_project_label: true
+Testing:
+  color: "#5843AD"
+  description:
+  description_html: ''
+  text_color: "#FFFFFF"
+  subscribed: false
+  priority: 1
+  is_project_label: true
+WIP:
+  color: "#5CB85C"
+  description:
+  description_html: ''
+  text_color: "#FFFFFF"
+  subscribed: false
+  priority: 4
+  is_project_label: true
+Won't Fix:
+  color: "#7F8C8D"
+  description:
+  description_html: ''
+  text_color: "#FFFFFF"
+  subscribed: false
+  priority:
+  is_project_label: true

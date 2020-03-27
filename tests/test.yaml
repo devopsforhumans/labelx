@@ -1,0 +1,25 @@
+---
+Bug:
+    color: "#FF0000"
+    description: Reported BUG, TOP Priority (Even without Priority Level)
+    description_html: Reported BUG, TOP Priority (Even without Priority Level)
+    text_color: "#FFFFFF"
+    subscribed: false
+    priority: 0
+    is_project_label: true
+Done:
+    color: "#0033CC"
+    description: No More Work Required
+    description_html: No More Work Required
+    text_color: "#FFFFFF"
+    subscribed: false
+    priority:
+    is_project_label: true
+Feature Upgrade:
+    color: "#AD4363"
+    description: Upgrade On Existing Feature
+    description_html: Upgrade On Existing Feature
+    text_color: "#FFFFFF"
+    subscribed: false
+    priority:
+    is_project_label: true
