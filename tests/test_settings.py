@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # Import builtin libraries
+from pathlib import Path
 import unittest
 
 # Import custom (local) python libraries
@@ -22,7 +23,8 @@ class TestSettings(unittest.TestCase):
         self.assertGreater(len(generate_labels()), 0)
 
     def test_settings_read_custom_file(self):
-        self.assertIsInstance(generate_labels(label_file_path="test.yaml"), dict)
+        test_file_path = Path(__file__).parent.absolute() / "test.yaml"
+        self.assertIsInstance(generate_labels(label_file_path=test_file_path), dict)
 
     def test_settings_raises_error_if_custom_file_is_not_found(self):
         self.assertRaises(FileNotFoundError, generate_labels, "fake.yaml")
