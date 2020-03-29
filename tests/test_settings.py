@@ -36,7 +36,10 @@ class TestSettings(unittest.TestCase):
         self.assertIsInstance(generate_endpoints(project_id=1234), str)
 
     def test_settings_endpoint_returns_correct_project_id(self):
-        self.assertEqual(generate_endpoints(project_id=1234), "https://gitlab.com/api/v4/projects/1234/labels")
+        self.assertEqual(
+            generate_endpoints(project_id=1234),
+            "https://gitlab.com/api/v4/projects/1234/labels",
+        )
 
     def test_settings_endpoint_returns_false_with_non_integer_project_id(self):
         self.assertFalse(generate_endpoints(project_id="this_will_raise_type_error"))
