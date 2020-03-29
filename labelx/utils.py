@@ -157,17 +157,18 @@ def show_info(view_type=None):
 def validate_file_extension(ctx, param, value):
     """This function validates file extensions"""
 
-    allowed_extensions = ["txt"]
     if value:
         try:
             ext = value.rsplit(".", 1)[1]
         except AttributeError:
             return False
-        if ext not in allowed_extensions:
+        if ext not in settings.allowed_extensions:
             click.secho(
                 f"[x] Provided file extension [{ext}] is not allowed!", fg="red"
             )
-            click.secho(f"[!] Use {allowed_extensions} file extensions!", fg="blue")
+            click.secho(
+                f"[!] Use {settings.allowed_extensions} file extensions!", fg="blue"
+            )
             ctx.abort()
         else:
             return value

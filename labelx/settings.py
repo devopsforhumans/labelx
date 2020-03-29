@@ -23,6 +23,7 @@ accepted_status_codes = [200, 201, 202]
 max_col_length = 88
 default_protocol = "https"
 default_hostname = "gitlab.com"
+allowed_extensions = ["yaml", "yml"]
 
 
 # Read configurations
@@ -33,13 +34,17 @@ def read_yaml(yaml_file_path=None):
     :param yaml_file_path: Configuration files full path (default and custom)
     """
     logging.debug(f"[$] Reading yaml file.....")
-    with open(yaml_file_path, "r") as stream:
-        try:
-            defaults = yaml.load(stream, Loader=yaml.FullLoader)
-        except Exception as err:
-            click.secho(f"ERROR: {err}", fg="red")
-            sys.exit(1)
-    return defaults
+    file_ext = str(yaml_file_path).rsplit(".", 1)[1]
+    if file_ext in allowed_extensions:
+        with open(yaml_file_path, "r") as stream:
+            try:
+                defaults = yaml.load(stream, Loader=yaml.FullLoader)
+            except Exception as err:
+                click.secho(f"[x] ERROR: {err}", fg="red")
+                sys.exit(1)
+        return defaults
+    else:
+        return False
 
 
 # Generate payloads
