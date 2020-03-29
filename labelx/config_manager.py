@@ -90,7 +90,7 @@ def load_config(config_file_paths=None):
     )
     if file_flag == 1 and permission_flag == 1:
         all_configs = settings.read_yaml(yaml_file_path=default_config)
-        base_directory = Path(Path(default_config).parent).parent
+        base_directory = Path(default_config).parent
         all_configs["common"] = {}
         all_configs["common"]["base_directory"] = base_directory
         logging.debug(f"[#] Configuration read complete!")

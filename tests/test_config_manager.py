@@ -54,3 +54,17 @@ class TestConfigManager(unittest.TestCase):
         TestConfigManager.setUp(self, custom_dir=custom_config_dir)
         TestConfigManager._create_tmp_config(self)
         self.assertIsInstance(load_config(config_file_paths=[self.config_path]), dict)
+
+    def test_config_manager_returns_correct_base_dir_when_no_config_provided(self):
+        TestConfigManager._create_tmp_config(self)
+        all_configs = load_config()
+        base_dir = all_configs["common"]["base_directory"]
+        self.assertEqual(base_dir, self.config_path.parent)
+
+    def test_config_manager_returns_correct_base_dir_when_custom_config_provided(self):
+        custom_config_dir = str(Path.home())
+        TestConfigManager.setUp(self, custom_dir=custom_config_dir)
+        TestConfigManager._create_tmp_config(self)
+        all_configs = load_config(config_file_paths=[self.config_path])
+        base_dir = all_configs["common"]["base_directory"]
+        self.assertEqual(base_dir, self.config_path.parent)
