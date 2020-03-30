@@ -115,6 +115,7 @@ def _show_author_info():
         "Version": version,
         "Author": author,
         "Contact": author_email,
+        "License": package_license,
         "Copyright": copy_right,
     }
     for key, value in author_info.items():

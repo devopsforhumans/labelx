@@ -61,7 +61,7 @@ pass_context = click.make_pass_decorator(Context, ensure=True)
 @click.version_option()
 @pass_context
 def mission_control(context, debug):
-    """Rancher automation control panel"""
+    """GitLab label creator control panel"""
 
     context.debug = debug
     context.initial_msg = True
