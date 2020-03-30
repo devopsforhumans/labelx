@@ -98,16 +98,6 @@ pipeline {
                         '''
                     }
                 }
-                stage ('Build PDF') {
-                     steps {
-                        sh '''
-                        source venv/bin/activate
-                        cd docs/
-                        make latexpdf LATEXMKOPTS="-silent -f -no-shell-escape"
-                        deactivate
-                        '''
-                    }
-                }
             }
         }
         stage ("Run Tests"){
@@ -172,16 +162,15 @@ pipeline {
                         archiveArtifacts artifacts: 'dist/*'
                     }
                 }
-                stage ('Archive Artifacts - tarball') {
+                stage ('Archive Artifacts - Tarball') {
                     steps {
                         archiveArtifacts artifacts: '*.gz ',
                         onlyIfSuccessful: true
                     }
                 }
-                stage ('Archive Artifacts - pdf') {
+                stage ('Archive Test Results') {
                     steps {
-                        archiveArtifacts artifacts: 'docs/build/latex/*.pdf',
-                        onlyIfSuccessful: true
+                        junit allowEmptyResults: true, testResults: 'build/labelx_test_results.xml'
                     }
                 }
                 stage ('Publish to Test') {
@@ -202,11 +191,6 @@ pipeline {
                     }
                 }
             }
-        }
-    }
-    post {
-        always {
-            junit allowEmptyResults: true, testResults: 'build/labelx_test_results.xml'
         }
     }
 }
