@@ -6,12 +6,10 @@
 # Import builtin python libraries
 import logging
 import os
-import sys
 from pathlib import Path
 
 # Import external python libraries
 import click
-import yaml
 
 # Import custom (local) python packages
 from . import __package_name__ as package_name

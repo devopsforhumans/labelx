@@ -4,7 +4,6 @@
 """Setting parameters module for labelx"""
 
 # Import builtin libraries
-import json
 import logging
 import os
 import sys
@@ -12,6 +11,9 @@ import sys
 # Import external python libraries
 import click
 import yaml
+
+# Import custom (local) python packages
+from . import config_manager
 
 # Source code meta data
 __author__ = "Dalwar Hossain"
@@ -69,22 +71,28 @@ def generate_labels(label_file_path=None):
 
 
 # Generate Endpoints
-def generate_endpoints(project_id=None):
+def generate_endpoints(project_id=None, custom_config_path=None):
     """
     Get API endpoints
 
     :param project_id: (str) GitLab Project ID
+    :param custom_config_path: (str) Configuration file path
     :returns: (str) API endpoint
     """
 
     if isinstance(project_id, int):
-        all_configs = False
+        if custom_config_path:
+            all_configs = config_manager.load_config(
+                config_file_paths=[custom_config_path]
+            )
+        else:
+            all_configs = config_manager.load_config()
         if not all_configs:
             protocol = default_protocol
             host = default_hostname
         else:
-            protocol = "blah"
-            host = "blah"
+            protocol = all_configs["login"]["protocol"]
+            host = all_configs["login"]["host"]
         endpoint = f"{protocol}://{host}/api/{api_version}/projects/{project_id}/labels"
         return endpoint
 

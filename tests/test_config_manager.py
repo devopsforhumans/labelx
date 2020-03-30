@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 # Import builtin libraries
-import os, shutil
+import os
+import shutil
 from pathlib import Path
 import unittest
 
@@ -25,12 +26,15 @@ class TestConfigManager(unittest.TestCase):
         self.config_dir = Path(f"{package_name}")
         self.config_file = "config.yaml"
         self.config_path = self.base_dir / self.config_dir / self.config_file
-        self.config_dict = {"host": "gitlab.com", "use_ssl": "True", "token": "secret"}
+        self.config_dict = {
+            "login": {"host": "gitlab.com", "protocol": "https", "token": "secret"}
+        }
 
     def tearDown(self):
         if self.config_path.parent.exists():
             shutil.rmtree(self.config_path.parent)
 
+    # Create TMP config file
     def _create_tmp_config(self):
         if not self.config_path.exists():
             os.makedirs(self.config_path.parent)
