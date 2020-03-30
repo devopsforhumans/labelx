@@ -39,7 +39,7 @@ pipeline {
                 sh "virtualenv --always-copy -p ${PYTHON_INTERPRETER} venv"
                 sh '''
                 source venv/bin/activate
-                pip install --upgrade pip
+                pip install --upgrade pip setuptools wheel
                 pip --version
                 '''
             }
@@ -55,7 +55,6 @@ pipeline {
                     steps {
                         sh '''
                         source venv/bin/activate
-                        pip install --upgrade setuptools wheel twine
                         pip install -r requirements_dev.txt
                         deactivate
                         '''
