@@ -30,7 +30,7 @@ class TestUtils(unittest.TestCase):
         with TestUtils.captured_output(self) as (out, err):
             initial_message()
         output = out.getvalue().strip().split("\n")
-        self.assertEqual(output[1], "[*] Initializing.....")
+        self.assertEqual(output[0], "[*] Initializing.....")
 
     def test_utils_banner_returns_a_message(self):
         with TestUtils.captured_output(self) as (out, err):
