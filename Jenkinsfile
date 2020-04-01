@@ -1,7 +1,7 @@
 /*
 File: Jenkinsfile
-Author: Dalwar Hossain (dalwar.hossain@dimensiondata.com)
-Copyright: Dimensiondata Germany AG & Co. KG
+Author: Dalwar Hossain (dalwar23@protonmail.com)
+Copyright: Dalwar Hossain
 */
 
 pipeline {
@@ -97,6 +97,16 @@ pipeline {
                         '''
                     }
                 }
+                stage ('Build PDF') {
+                     steps {
+                        sh '''
+                        source venv/bin/activate
+                        cd docs/
+                        make latexpdf LATEXMKOPTS="-silent -f -no-shell-escape"
+                        deactivate
+                        '''
+                    }
+                }
             }
         }
         stage ("Run Tests"){
@@ -164,6 +174,12 @@ pipeline {
                 stage ('Archive Artifacts - Tarball') {
                     steps {
                         archiveArtifacts artifacts: '*.gz ',
+                        onlyIfSuccessful: true
+                    }
+                }
+                stage ('Archive Artifacts - pdf') {
+                    steps {
+                        archiveArtifacts artifacts: 'docs/build/latex/*.pdf',
                         onlyIfSuccessful: true
                     }
                 }
