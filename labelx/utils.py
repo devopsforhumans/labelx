@@ -60,6 +60,22 @@ def initial_message():
     )
 
 
+# Banner
+def banner():
+    """This function show a banner"""
+
+    banner_string = f"""
+    +--------------------------------------------------+
+    |                     {package_name}                       |
+    | about: GitLab label creator for issues           |
+    | author: {author} ({author_email}) |
+    | version: {version}                                   |
+    | license: {package_license}           |
+    +--------------------------------------------------+
+    """
+    click.secho(f"{banner_string}", fg="green")
+
+
 # Goodbye
 def goodbye(before=False, data=None):
     """
