@@ -14,6 +14,7 @@ Welcome to labelx's documentation!
    installation
    tutorials
    api_references
+   contributing
    changelog
 
 
