@@ -7,12 +7,8 @@ import unittest
 from io import StringIO
 import sys
 
-# Import external python libraries
-import yaml
-
 # Import custom (local) python libraries
 from labelx.utils import initial_message, banner
-from labelx import __package_name__ as package_name
 
 
 class TestUtils(unittest.TestCase):

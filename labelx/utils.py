@@ -53,11 +53,11 @@ def divider(text="", char="-"):
 def initial_message():
     """This function shows the initialization message"""
 
-    divider(f"Initializing [{package_name}]")
     click.secho(f"[*] Initializing.....", fg="cyan")
     click.secho(
         f"[*] Please use 'labelx --help' to see all available options", fg="cyan"
     )
+    divider(f"[{package_name}]")
 
 
 # Banner
@@ -65,14 +65,16 @@ def banner():
     """This function show a banner"""
 
     banner_string = f"""
-    +--------------------------------------------------+
-    |                     {package_name}                       |
-    | about: GitLab label creator for issues           |
-    | author: {author} ({author_email}) |
-    | version: {version}                                   |
-    | license: {package_license}           |
-    +--------------------------------------------------+
-    """
++--------------------------------------------------+
+|                     {package_name}                       |
++--------------------------------------------------+
+| about: GitLab label creator for issues           |
+| author: {author} ({author_email}) |
+| version: {version}                                   |
+| license: {package_license}           |
+| documentation: https://labelx.readthedocs.io/    |
++--------------------------------------------------+
+"""
     click.secho(f"{banner_string}", fg="green")
 
 

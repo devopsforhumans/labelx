@@ -24,6 +24,7 @@ Features
 --------
 
 * Show package information
+* Create labels for GitLab projects
 
 Credits
 -------

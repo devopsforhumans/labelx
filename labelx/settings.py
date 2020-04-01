@@ -23,8 +23,6 @@ __email__ = "dalwar23@protonmail.com"
 api_version = "v4"
 accepted_status_codes = [200, 201, 202]
 max_col_length = 88
-default_protocol = "https"
-default_hostname = "gitlab.com"
 allowed_extensions = ["yaml", "yml"]
 
 
@@ -75,7 +73,7 @@ def generate_endpoints(project_id=None, custom_config_path=None):
     """
     Get API endpoints
 
-    :param project_id: (str) GitLab Project ID
+    :param project_id: (int) GitLab Project ID
     :param custom_config_path: (str) Configuration file path
     :returns: (str) API endpoint
     """
@@ -87,15 +85,30 @@ def generate_endpoints(project_id=None, custom_config_path=None):
             )
         else:
             all_configs = config_manager.load_config()
-        if not all_configs:
-            protocol = default_protocol
-            host = default_hostname
-        else:
-            protocol = all_configs["login"]["protocol"]
-            host = all_configs["login"]["host"]
+        protocol = all_configs["login"]["protocol"]
+        host = all_configs["login"]["host"]
         endpoint = f"{protocol}://{host}/api/{api_version}/projects/{project_id}/labels"
+        logging.debug(f"Endpoint: {endpoint}")
         return endpoint
-
     else:
         click.secho(f"[x] No project ID found! Provide project ID!", fg="red")
-        return False
+        sys.exit(1)
+
+
+# Define authentication
+def get_authentication():
+    """
+    Generates the authentication
+
+    :return: (str/tuple) Authentication
+    """
+
+    configs = config_manager.load_config()
+    if configs:
+        login = configs["login"]
+    else:
+        sys.exit(1)
+
+    token = login["token"]
+    logging.debug(f"Authentication Token: {token}")
+    return token

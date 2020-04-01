@@ -28,6 +28,9 @@ class TestSettings(unittest.TestCase):
         self.txt_string = """This is a text file
         This should return error as yaml loader can not read this file
         """
+        self.config_dict = {
+            "login": {"host": "test.gitlab.com", "protocol": "https", "token": "secret"}
+        }
         if custom_dir is None:
             self.base_dir = Path(Path.home()) / f".config/"
         else:
@@ -35,9 +38,6 @@ class TestSettings(unittest.TestCase):
         self.config_dir = Path(f"{package_name}")
         self.config_file = "config.yaml"
         self.config_path = self.base_dir / self.config_dir / self.config_file
-        self.config_dict = {
-            "login": {"host": "test.gitlab.com", "protocol": "https", "token": "secret"}
-        }
 
     def tearDown(self):
         if self.txt_test_file_path.exists():
@@ -93,20 +93,24 @@ class TestSettings(unittest.TestCase):
 
     # generate_endpoints()
 
-    def test_settings_endpoint_returns_false_if_project_id_not_provided(self):
-        self.assertFalse(generate_endpoints())
+    def test_settings_endpoint_returns_system_exit_if_project_id_not_provided(self):
+        self.assertRaises(SystemExit, generate_endpoints)
 
     def test_settings_endpoint_returns_a_string(self):
+        TestSettings._create_tmp_config(self)
         self.assertIsInstance(generate_endpoints(project_id=1234), str)
 
     def test_settings_endpoint_returns_correct_project_id(self):
+        TestSettings._create_tmp_config(self)
         self.assertEqual(
             generate_endpoints(project_id=1234),
-            "https://gitlab.com/api/v4/projects/1234/labels",
+            "https://test.gitlab.com/api/v4/projects/1234/labels",
         )
 
-    def test_settings_endpoint_returns_false_with_non_integer_project_id(self):
-        self.assertFalse(generate_endpoints(project_id="this_will_raise_type_error"))
+    def test_settings_endpoint_returns_system_exit_with_non_integer_project_id(self):
+        self.assertRaises(
+            SystemExit, generate_endpoints, "this_will_raises_system_exit"
+        )
 
     def test_settings_endpoint_returns_correct_protocol_and_host(self):
         custom_dir_path = str(Path.home())

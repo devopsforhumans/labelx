@@ -7,6 +7,7 @@
 import logging
 import os
 from pathlib import Path
+import sys
 
 # Import external python libraries
 import click
@@ -86,6 +87,9 @@ def load_config(config_file_paths=None):
     file_flag, permission_flag, default_config = _check_file_permissions(
         file_paths=config_file_paths
     )
+    logging.debug(f"File Flag: {file_flag}")
+    logging.debug(f"Permission Flag: {permission_flag}")
+    logging.debug(f"Default Config: {default_config}")
     if file_flag == 1 and permission_flag == 1:
         all_configs = settings.read_yaml(yaml_file_path=default_config)
         base_directory = Path(default_config).parent
@@ -96,4 +100,4 @@ def load_config(config_file_paths=None):
         return all_configs
     else:
         click.secho(f"[x] Could not locate configuration file!", fg="red")
-        return False
+        sys.exit(1)

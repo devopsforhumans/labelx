@@ -46,8 +46,8 @@ class TestConfigManager(unittest.TestCase):
 
     # load_config
 
-    def test_config_manager_returns_false_with_no_configs_provided(self):
-        self.assertFalse(load_config())
+    def test_config_manager_returns_system_exit_with_no_configs_provided(self):
+        self.assertRaises(SystemExit, load_config)
 
     def test_config_manager_returns_a_dict_if_config_in_home_dir(self):
         TestConfigManager._create_tmp_config(self)
