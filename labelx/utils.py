@@ -53,11 +53,29 @@ def divider(text="", char="-"):
 def initial_message():
     """This function shows the initialization message"""
 
-    divider(f"Initializing [{package_name}]")
     click.secho(f"[*] Initializing.....", fg="cyan")
     click.secho(
         f"[*] Please use 'labelx --help' to see all available options", fg="cyan"
     )
+    divider(f"[{package_name}]")
+
+
+# Banner
+def banner():
+    """This function show a banner"""
+
+    banner_string = f"""
++--------------------------------------------------+
+|                     {package_name}                       |
++--------------------------------------------------+
+| about: GitLab label creator for issues           |
+| author: {author} ({author_email}) |
+| version: {version}                                   |
+| license: {package_license}           |
+| documentation: https://labelx.readthedocs.io/    |
++--------------------------------------------------+
+"""
+    click.secho(f"{banner_string}", fg="green")
 
 
 # Goodbye
@@ -115,6 +133,7 @@ def _show_author_info():
         "Version": version,
         "Author": author,
         "Contact": author_email,
+        "License": package_license,
         "Copyright": copy_right,
     }
     for key, value in author_info.items():
@@ -157,17 +176,18 @@ def show_info(view_type=None):
 def validate_file_extension(ctx, param, value):
     """This function validates file extensions"""
 
-    allowed_extensions = ["txt"]
     if value:
         try:
             ext = value.rsplit(".", 1)[1]
         except AttributeError:
             return False
-        if ext not in allowed_extensions:
+        if ext not in settings.allowed_extensions:
             click.secho(
                 f"[x] Provided file extension [{ext}] is not allowed!", fg="red"
             )
-            click.secho(f"[!] Use {allowed_extensions} file extensions!", fg="blue")
+            click.secho(
+                f"[!] Use {settings.allowed_extensions} file extensions!", fg="blue"
+            )
             ctx.abort()
         else:
             return value

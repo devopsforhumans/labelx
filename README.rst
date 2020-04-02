@@ -23,10 +23,13 @@ Label Creator for GitLab Projects.
 Features
 --------
 
-* TODO
+* Show package information
+* Create labels for GitLab projects
 
 Credits
 -------
+
+See `AUTHORS.rst <AUTHORS.rst>`_
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 

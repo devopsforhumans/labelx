@@ -64,7 +64,8 @@ Ready to contribute? Here's how to set up `labelx` for local development.
 
     $ git clone git@github.com:your_name_here/labelx.git
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper
+installed, this is how you set up your fork for local development::
 
     $ mkvirtualenv labelx
     $ cd labelx/
@@ -112,7 +113,7 @@ Tips
 To run a subset of tests::
 
 
-    $ python -m unittest tests.test_labelx
+    $ py.test
 
 Deploying
 ---------

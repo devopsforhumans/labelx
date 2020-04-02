@@ -11,7 +11,8 @@ import sys
 import click
 
 # Import custom (local) python libraries
-from .utils import debug_manager, initial_message, show_info, validate_file_extension
+from .controller import create_label_controller
+from .utils import debug_manager, banner, initial_message, show_info
 
 # Source code meta data
 __author__ = "Dalwar Hossain"
@@ -43,6 +44,7 @@ class Context(object):
 
         self.debug = False
         self.initial_msg = False
+        self.banner = False
 
 
 pass_context = click.make_pass_decorator(Context, ensure=True)
@@ -61,10 +63,11 @@ pass_context = click.make_pass_decorator(Context, ensure=True)
 @click.version_option()
 @pass_context
 def mission_control(context, debug):
-    """Rancher automation control panel"""
+    """GitLab label creator control panel"""
 
     context.debug = debug
     context.initial_msg = True
+    context.banner = True
     context.dry_run = True
     context.show_help = False
 
@@ -89,3 +92,34 @@ def pkg_info(context, author):
         show_info(view_type="author")
     else:
         show_info(view_type="all")
+
+
+@mission_control.command(short_help="Create labels for issues and merge requests.")
+@click.option(
+    "-p",
+    "--project-id",
+    "project_id",
+    required=True,
+    help="Numeric project ID.",
+    type=int,
+)
+@click.option(
+    "--debug",
+    "sub_debug",
+    is_flag=True,
+    default=False,
+    show_default=True,
+    help="Turns on DEBUG mode.",
+    type=str,
+)
+@pass_context
+def create(context, project_id, sub_debug):
+    """Create labels in a GitLab project"""
+
+    if context.banner:
+        banner()
+    if context.debug or sub_debug:
+        debug_manager()
+    if context.initial_msg:
+        initial_message()
+    create_label_controller(project_id=project_id, custom_config_path=None)
