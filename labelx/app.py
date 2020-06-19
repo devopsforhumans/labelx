@@ -11,7 +11,7 @@ import sys
 import click
 
 # Import custom (local) python libraries
-from .controller import create_label_controller
+from .controller import labelx_controller
 from .utils import debug_manager, banner, initial_message, show_info
 
 # Source code meta data
@@ -113,7 +113,7 @@ def pkg_info(context, author):
     type=str,
 )
 @pass_context
-def create(context, project_id, sub_debug):
+def create_labels(context, project_id, sub_debug):
     """Create labels in a GitLab project"""
 
     if context.banner:
@@ -122,4 +122,35 @@ def create(context, project_id, sub_debug):
         debug_manager()
     if context.initial_msg:
         initial_message()
-    create_label_controller(project_id=project_id, custom_config_path=None)
+    labelx_controller(endpoint="labels", project_id=project_id, custom_config_path=None)
+
+
+@mission_control.command(short_help="Create badges for project.")
+@click.option(
+    "-p",
+    "--project-id",
+    "project_id",
+    required=True,
+    help="Numeric project ID.",
+    type=int,
+)
+@click.option(
+    "--debug",
+    "sub_debug",
+    is_flag=True,
+    default=False,
+    show_default=True,
+    help="Turns on DEBUG mode.",
+    type=str,
+)
+@pass_context
+def create_badges(context, project_id, sub_debug):
+    """Create badges in a GitLab project"""
+
+    if context.banner:
+        banner()
+    if context.debug or sub_debug:
+        debug_manager()
+    if context.initial_msg:
+        initial_message()
+    labelx_controller(endpoint="badges", project_id=project_id, custom_config_path=None)
