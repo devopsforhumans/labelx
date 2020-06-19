@@ -30,20 +30,20 @@ Linux/macOS
 -----------
 Install the latest release of ``labelx`` with ``pip``:
 
-.. code-block:: python
+.. code-block:: shell
 
    pip install labelx
 
 To upgrade to a newer version use the ``--upgrade`` flag:
 
-.. code-block:: python
+.. code-block:: shell
 
    pip install --upgrade labelx
 
 If system wide installation is not possible for permission reasons, use ``--user``
 flag to install ``labelx`` for current user
 
-.. code-block:: python
+.. code-block:: shell
 
    pip install --user labelx
 
@@ -64,13 +64,13 @@ Considering ``python3`` is installed and ``pip`` is configured.
 
 Open Cmder/ConEmu and Type:
 
-.. code-block:: python
+.. code-block:: shell
 
    pip install labelx
 
 Or
 
-.. code-block:: python
+.. code-block:: shell
 
    python3 setup.py install
 
@@ -84,13 +84,13 @@ from `GitHub <https://github.com/dalwar23/labelx>`_ or
 unpack it in a preferred directory and run the following commands at the top level of
 the directory:
 
-.. code-block:: python
+.. code-block:: shell
 
    pip install .
 
 or run the following:
 
-.. code-block:: python
+.. code-block:: shell
 
    python3 setup install
 

@@ -22,16 +22,17 @@ below -
 
    Usage: labelx [OPTIONS] COMMAND [ARGS]...
 
-     GitLab label creator control panel
+   GitLab label creator control panel
 
    Options:
      --debug    Turns on DEBUG mode.  [default: False]
      --version  Show the version and exit.
      --help     Show this message and exit.
-
+   
    Commands:
-     create    Create labels for issues and merge requests.
-     pkg-info  Shows package information.
+     create-badges  Create badges for project.
+     create-labels  Create labels for issues and merge requests.
+     pkg-info       Shows package information.
 
 To checkout individual options for any command use ``--help`` flag.
 
@@ -104,7 +105,7 @@ in the project mentioned. Output should be something similar -
    +--------------------------------------------------+
    | about: GitLab label creator for issues           |
    | author: Dalwar Hossain (dalwar23@protonmail.com) |
-   | version: 1.0.3                                   |
+   | version: 2.1.1                                   |
    | license: GNU General Public License v3           |
    | documentation: https://labelx.readthedocs.io/    |
    +--------------------------------------------------+

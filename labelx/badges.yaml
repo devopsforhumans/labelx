@@ -1,0 +1,33 @@
+---
+license:
+  link_url: "%{project_path}/LICENSE"
+  image_url: "https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square"
+  position: 0
+platform:
+  link_url: "%{project_path}"
+  image_url: "https://img.shields.io/badge/Platform-cc3300?style=flat-square"
+  position: 1
+windows:
+  link_url: "%{project_path}"
+  image_url: "https://img.shields.io/badge/Windows-blue?style=flat-square&logo=windows"
+  position: 2
+linux:
+  link_url: "%{project_path}"
+  image_url: "https://img.shields.io/badge/Linux-333?style=flat-square&logo=linux"
+  position: 3
+macos:
+  link_url: "%{project_path}"
+  image_url: "https://img.shields.io/badge/MacOS-333?style=flat-square&logo=apple"
+  position: 4
+python:
+  link_url: "https://python.org"
+  image_url: "https://img.shields.io/badge/Python-3.6%20%7C%203.7%20%7C%203.8-orange.svg?style=flat-square&logo=python"
+  position: 5
+style:
+  link_url: "https://github.com/python/black"
+  image_url: "https://img.shields.io/badge/code%20style-black-black.svg?style=flat-square"
+  position: 6
+layout:
+  link_url: "https://cookiecutter.readthedocs.io/en/latest/"
+  image_url: "https://img.shields.io/badge/Layout-Cookiecutter-blue.svg?style=flat-square"
+  position: 7
