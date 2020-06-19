@@ -25,6 +25,21 @@ Features
 
 * Show package information
 * Create labels for GitLab projects
+* Create badges for GitLab projects
+
+Requirements
+------------
+
+* python >= 3.6
+* ``config.yaml`` at ``~/.confing/labelx/``
+
+.. code-block:: yaml
+
+   ---
+   login:
+     host: gitlab.company.com
+     protocol: https
+     token: KHGJIO**-dA76VGHs36
 
 Credits
 -------
