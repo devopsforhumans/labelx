@@ -1,7 +1,7 @@
 ---
 license:
   link_url: "%{project_path}/LICENSE"
-  image_url: "https://img.shields.io/badge/License-NTT%20EULA%201.0.1-blue.svg?style=flat-square"
+  image_url: "https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square"
   position: 0
 platform:
   link_url: "%{project_path}"

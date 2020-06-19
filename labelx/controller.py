@@ -35,11 +35,11 @@ def labelx_controller(
     :returns: (stdout) Output on screen
     """
 
-    all_data = generate_payload(endpoint_type=endpoint)
     skipped = []
     api_method = "POST"
-    endpoint_url = generate_endpoints(endpoint_type=endpoint, project_id=project_id)
+    endpoint_url, host = generate_endpoints(endpoint_type=endpoint, project_id=project_id)
     headers = get_headers()
+    all_data = generate_payload(endpoint_type=endpoint, scm_host=host)
     for data_key, data_value in all_data.items():
         data_value["name"] = data_key
         try:
@@ -51,7 +51,9 @@ def labelx_controller(
             skipped.append(data_key)
             payload = None
         if payload:
-            click.secho(f"[$] Creating label - [{data_key}].....", fg="blue", nl=False)
+            click.secho(f"[$] Creating {endpoint[:-1]} - ", fg="cyan", nl=False)
+            click.secho(f"[{data_key}]", fg="white", nl=False)
+            click.secho(f" ..... ", fg="yellow", nl=False)
             logging.debug(f"Payload: {payload}")
             api_response = call_api_endpoint(
                 method=api_method,

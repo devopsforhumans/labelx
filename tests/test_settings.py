@@ -86,11 +86,20 @@ class TestSettings(unittest.TestCase):
 
     def test_settings_read_custom_file_labels(self):
         self.assertIsInstance(
-            generate_payload(endpoint_type="labels", custom_data_file_path=self.test_file_path), dict
+            generate_payload(
+                endpoint_type="labels", custom_data_file_path=self.test_file_path
+            ),
+            dict,
         )
 
     def test_settings_raises_error_if_custom_file_is_not_found_labels(self):
-        self.assertRaises(FileNotFoundError, generate_payload, "labels", self.fake_test_file_path)
+        self.assertRaises(
+            FileNotFoundError,
+            generate_payload,
+            None,
+            "labels",
+            self.fake_test_file_path,
+        )
 
     # generate_payload(endpoint_type=None)
     # test badges - payload
@@ -103,32 +112,57 @@ class TestSettings(unittest.TestCase):
 
     def test_settings_read_custom_file_badges(self):
         self.assertIsInstance(
-            generate_payload(endpoint_type="badges", custom_data_file_path=self.test_file_path), dict
+            generate_payload(
+                endpoint_type="badges", custom_data_file_path=self.test_file_path
+            ),
+            dict,
         )
 
     def test_settings_raises_error_if_custom_file_is_not_found_badges(self):
-        self.assertRaises(FileNotFoundError, generate_payload, "badges", self.fake_test_file_path)
+        self.assertRaises(
+            FileNotFoundError,
+            generate_payload,
+            None,
+            "badges",
+            self.fake_test_file_path,
+        )
 
     # generate_endpoints(endpoint_type=None)
     # test endpoints - labels
 
-    def test_settings_endpoint_returns_system_exit_if_project_id_not_provided_labels(self):
+    def test_settings_endpoint_returns_system_exit_if_project_id_not_provided_labels(
+        self
+    ):
         self.assertRaises(SystemExit, generate_endpoints, endpoint_type="labels")
 
-    def test_settings_endpoint_returns_a_string_labels(self):
+    def test_settings_endpoint_returns_a_list_labels(self):
         TestSettings._create_tmp_config(self)
-        self.assertIsInstance(generate_endpoints(endpoint_type="labels", project_id=1234), str)
+        self.assertIsInstance(
+            generate_endpoints(endpoint_type="labels", project_id=1234), list
+        )
 
     def test_settings_endpoint_returns_correct_project_id_labels(self):
         TestSettings._create_tmp_config(self)
         self.assertEqual(
-            generate_endpoints(endpoint_type="labels", project_id=1234),
+            generate_endpoints(endpoint_type="labels", project_id=1234)[0],
             "https://test.gitlab.com/api/v4/projects/1234/labels",
         )
 
-    def test_settings_endpoint_returns_system_exit_with_non_integer_project_id_labels(self):
+    def test_settings_endpoint_returns_correct_host_url_labels(self):
+        TestSettings._create_tmp_config(self)
+        self.assertEqual(
+            generate_endpoints(endpoint_type="labels", project_id=1234)[1],
+            "https://test.gitlab.com",
+        )
+
+    def test_settings_endpoint_returns_system_exit_with_non_integer_project_id_labels(
+        self
+    ):
         self.assertRaises(
-            SystemExit, generate_endpoints, endpoint_type="labels", project_id="this_will_raises_system_exit"
+            SystemExit,
+            generate_endpoints,
+            endpoint_type="labels",
+            project_id="this_will_raises_system_exit",
         )
 
     def test_settings_endpoint_returns_correct_protocol_and_host_labels(self):
@@ -136,30 +170,50 @@ class TestSettings(unittest.TestCase):
         TestSettings.setUp(self, custom_dir=custom_dir_path)
         TestSettings._create_tmp_config(self)
         self.assertEqual(
-            generate_endpoints(endpoint_type="labels", project_id=1234, custom_config_path=self.config_path),
+            generate_endpoints(
+                endpoint_type="labels",
+                project_id=1234,
+                custom_config_path=self.config_path,
+            )[0],
             "https://test.gitlab.com/api/v4/projects/1234/labels",
         )
 
     # generate_endpoints(endpoint_type=None)
     # test endpoints - badges
 
-    def test_settings_endpoint_returns_system_exit_if_project_id_not_provided_badges(self):
+    def test_settings_endpoint_returns_system_exit_if_project_id_not_provided_badges(
+        self
+    ):
         self.assertRaises(SystemExit, generate_endpoints, endpoint_type="badges")
 
-    def test_settings_endpoint_returns_a_string_badges(self):
+    def test_settings_endpoint_returns_a_list_badges(self):
         TestSettings._create_tmp_config(self)
-        self.assertIsInstance(generate_endpoints(endpoint_type="badges", project_id=1234), str)
+        self.assertIsInstance(
+            generate_endpoints(endpoint_type="badges", project_id=1234), list
+        )
 
     def test_settings_endpoint_returns_correct_project_id_badges(self):
         TestSettings._create_tmp_config(self)
         self.assertEqual(
-            generate_endpoints(endpoint_type="badges", project_id=1234),
+            generate_endpoints(endpoint_type="badges", project_id=1234)[0],
             "https://test.gitlab.com/api/v4/projects/1234/badges",
         )
 
-    def test_settings_endpoint_returns_system_exit_with_non_integer_project_id_badges(self):
+    def test_settings_endpoint_returns_correct_host_url_badges(self):
+        TestSettings._create_tmp_config(self)
+        self.assertEqual(
+            generate_endpoints(endpoint_type="badges", project_id=1234)[1],
+            "https://test.gitlab.com",
+        )
+
+    def test_settings_endpoint_returns_system_exit_with_non_integer_project_id_badges(
+        self
+    ):
         self.assertRaises(
-            SystemExit, generate_endpoints, endpoint_type="badges", project_id="this_will_raises_system_exit"
+            SystemExit,
+            generate_endpoints,
+            endpoint_type="badges",
+            project_id="this_will_raises_system_exit",
         )
 
     def test_settings_endpoint_returns_correct_protocol_and_host_badges(self):
@@ -167,7 +221,11 @@ class TestSettings(unittest.TestCase):
         TestSettings.setUp(self, custom_dir=custom_dir_path)
         TestSettings._create_tmp_config(self)
         self.assertEqual(
-            generate_endpoints(endpoint_type="badges", project_id=1234, custom_config_path=self.config_path),
+            generate_endpoints(
+                endpoint_type="badges",
+                project_id=1234,
+                custom_config_path=self.config_path,
+            )[0],
             "https://test.gitlab.com/api/v4/projects/1234/badges",
         )
 
