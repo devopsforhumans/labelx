@@ -53,9 +53,10 @@ release = release_info["__version__"]
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
+    "sphinx.ext.napoleon",
     "sphinx.ext.doctest",
     "recommonmark",
-    "sphinx.ext.napoleon",
+    "sphinx_copybutton",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
