@@ -1,4 +1,8 @@
-Click==7.1.1
-requests==2.22.0
-colorama==0.4.1
-pyyaml==5.1.1
+Click>=7.1.1
+requests>=2.22.0
+colorama>=0.4.1
+pyyaml>=5.1.1
+sphinx-copybutton>=0.2.12
+recommonmark>=0.5.0
+sphinx_rtd_theme>=0.4.3
+Sphinx>=3.1.1
