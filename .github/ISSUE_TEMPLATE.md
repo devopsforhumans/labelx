@@ -1,4 +1,4 @@
-* labelxg version:
+* labelx version:
 * Python version:
 * Operating System:
 
