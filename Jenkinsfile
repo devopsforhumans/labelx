@@ -78,7 +78,7 @@ pipeline {
         }
         stage ('Build') {
             parallel {
-                stage ('Build Package') {
+                stage ('Build Source') {
                     steps {
                         sh '''
                         source venv/bin/activate
