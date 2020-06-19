@@ -11,7 +11,7 @@ pipeline {
         REPOSITORY_NAME = sh (script: 'echo $(echo `git config --get remote.origin.url` | rev | cut -d "/" -f 1 | cut -d "." -f 2 | rev)', returnStdout: true).trim()
     }
     options {
-        buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '1'))
+        buildDiscarder(logRotator(numToKeepStr: '3', artifactNumToKeepStr: '1'))
     }
     stages {
         stage ('Sanity Check') {
@@ -97,7 +97,7 @@ pipeline {
                         '''
                     }
                 }
-                stage ('Build PDF') {
+                /*stage ('Build PDF') {
                      steps {
                         sh '''
                         source venv/bin/activate
@@ -106,7 +106,7 @@ pipeline {
                         deactivate
                         '''
                     }
-                }
+                }*/
             }
         }
         stage ("Run Tests"){
@@ -177,12 +177,12 @@ pipeline {
                         onlyIfSuccessful: true
                     }
                 }
-                stage ('Archive Artifacts - pdf') {
+                /*stage ('Archive Artifacts - pdf') {
                     steps {
                         archiveArtifacts artifacts: 'docs/build/latex/*.pdf',
                         onlyIfSuccessful: true
                     }
-                }
+                }*/
                 stage ('Archive Test Results') {
                     steps {
                         junit allowEmptyResults: true, testResults: 'build/labelx_test_results.xml'

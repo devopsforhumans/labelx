@@ -13,3 +13,4 @@ Features
 
 * Show package information
 * Create labels for GitLab projects
+* Create badges for GitLab projects
