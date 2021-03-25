@@ -10,7 +10,7 @@ with open("README.rst") as readme_file:
 with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
-requirements = ["Click==7.1.1", "requests==2.22.0", "colorama==0.4.1", "pyyaml==5.1.1"]
+requirements = ["Click==7.1.1", "requests==2.22.0", "colorama==0.4.1", "pyyaml==5.4"]
 
 setup_requirements = []
 
