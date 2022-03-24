@@ -17,7 +17,7 @@ from . import config_manager
 
 # Source code meta data
 __author__ = "Dalwar Hossain"
-__email__ = "dalwar23@protonmail.com"
+__email__ = "dalwar23@pm.me"
 
 # Setting parameters
 api_version = "v4"

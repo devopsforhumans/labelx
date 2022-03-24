@@ -16,7 +16,7 @@ from .utils import debug_manager, banner, initial_message, show_info
 
 # Source code meta data
 __author__ = "Dalwar Hossain"
-__email__ = "dalwar23@protonmail.com"
+__email__ = "dalwar23@pm.me"
 
 
 # Alias group class

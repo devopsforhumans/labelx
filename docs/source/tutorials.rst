@@ -28,7 +28,7 @@ below -
      --debug    Turns on DEBUG mode.  [default: False]
      --version  Show the version and exit.
      --help     Show this message and exit.
-   
+
    Commands:
      create-badges  Create badges for project.
      create-labels  Create labels for issues and merge requests.
@@ -104,7 +104,7 @@ in the project mentioned. Output should be something similar -
    |                     labelx                       |
    +--------------------------------------------------+
    | about: GitLab label creator for issues           |
-   | author: Dalwar Hossain (dalwar23@protonmail.com) |
+   | author: Dalwar Hossain (dalwar23@pm.me) |
    | version: 2.1.1                                   |
    | license: GNU General Public License v3           |
    | documentation: https://labelx.readthedocs.io/    |

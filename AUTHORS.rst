@@ -5,7 +5,7 @@ Credits
 Development Lead
 ----------------
 
-* Dalwar Hossain <dalwar23@protonmail.com>
+* Dalwar Hossain <dalwar23@pm.me>
 
 Contributors
 ------------

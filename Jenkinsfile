@@ -1,6 +1,6 @@
 /*
 File: Jenkinsfile
-Author: Dalwar Hossain (dalwar23@protonmail.com)
+Author: Dalwar Hossain (dalwar23@pm.me)
 Copyright: Dalwar Hossain
 */
 
