@@ -68,8 +68,8 @@ def banner():
 +--------------------------------------------------+
 |                     {package_name}                       |
 +--------------------------------------------------+
-| about: GitLab label creator for issues           |
-| author: {author} ({author_email}) |
+| about: GitLab label/badge creator                |
+| author: {author} ({author_email})          |
 | version: {version}                                   |
 | license: {package_license}           |
 | documentation: https://labelx.readthedocs.io/    |
