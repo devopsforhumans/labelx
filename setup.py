@@ -10,7 +10,7 @@ with open("README.rst") as readme_file:
 with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
-requirements = ["Click==7.1.1", "requests==2.22.0", "colorama==0.4.1", "pyyaml==5.4"]
+requirements = ["Click >= 8.04", "requests >= 2.27.1", "colorama >= 0.4.4", "pyyaml >= 6.0.0"]
 
 setup_requirements = []
 
@@ -43,6 +43,6 @@ setup(
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/dalwar23/labelxg",
-    version="2.2.0",
+    version="2.2.1",
     zip_safe=False,
 )
