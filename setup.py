@@ -43,6 +43,6 @@ setup(
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/dalwar23/labelxg",
-    version="2.1.1",
+    version="2.2.0",
     zip_safe=False,
 )
