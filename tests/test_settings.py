@@ -131,7 +131,7 @@ class TestSettings(unittest.TestCase):
     # test endpoints - labels
 
     def test_settings_endpoint_returns_system_exit_if_project_id_not_provided_labels(
-        self
+        self,
     ):
         self.assertRaises(SystemExit, generate_endpoints, endpoint_type="labels")
 
@@ -156,7 +156,7 @@ class TestSettings(unittest.TestCase):
         )
 
     def test_settings_endpoint_returns_system_exit_with_non_integer_project_id_labels(
-        self
+        self,
     ):
         self.assertRaises(
             SystemExit,
@@ -182,7 +182,7 @@ class TestSettings(unittest.TestCase):
     # test endpoints - badges
 
     def test_settings_endpoint_returns_system_exit_if_project_id_not_provided_badges(
-        self
+        self,
     ):
         self.assertRaises(SystemExit, generate_endpoints, endpoint_type="badges")
 
@@ -207,7 +207,7 @@ class TestSettings(unittest.TestCase):
         )
 
     def test_settings_endpoint_returns_system_exit_with_non_integer_project_id_badges(
-        self
+        self,
     ):
         self.assertRaises(
             SystemExit,

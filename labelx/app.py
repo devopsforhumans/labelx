@@ -16,7 +16,7 @@ from .utils import debug_manager, banner, initial_message, show_info
 
 # Source code meta data
 __author__ = "Dalwar Hossain"
-__email__ = "dalwar23@protonmail.com"
+__email__ = "dalwar23@pm.me"
 
 
 # Alias group class
@@ -99,8 +99,16 @@ def pkg_info(context, author):
     "-p",
     "--project-id",
     "project_id",
-    required=True,
+    required=False,
     help="Numeric project ID.",
+    type=int,
+)
+@click.option(
+    "-g",
+    "--group-id",
+    "group_id",
+    required=False,
+    help="Numeric group ID.",
     type=int,
 )
 @click.option(
@@ -113,8 +121,10 @@ def pkg_info(context, author):
     type=str,
 )
 @pass_context
-def create_labels(context, project_id, sub_debug):
-    """Create labels in a GitLab project"""
+def create_labels(context, project_id, group_id, sub_debug):
+    """
+    Create labels in a GitLab project
+    """
 
     if context.banner:
         banner()
@@ -122,7 +132,23 @@ def create_labels(context, project_id, sub_debug):
         debug_manager()
     if context.initial_msg:
         initial_message()
-    labelx_controller(endpoint="labels", project_id=project_id, custom_config_path=None)
+    if project_id and group_id:
+        click.secho(
+            f"[x] Project ID and Group ID can not be used at the same time.", fg="red"
+        )
+        sys.exit(1)
+    if all(v is None for v in [project_id, group_id]):
+        click.secho(f"[x] Either Project ID or Group ID is required.", fg="red")
+        sys.exit(1)
+    if project_id or group_id:
+        logging.debug(f"[$] Project ID: {project_id}")
+        logging.debug(f"[$] Group ID: {group_id}")
+        labelx_controller(
+            endpoint="labels",
+            project_id=project_id,
+            group_id=group_id,
+            custom_config_path=None,
+        )
 
 
 @mission_control.command(short_help="Create badges for project.")
@@ -130,8 +156,16 @@ def create_labels(context, project_id, sub_debug):
     "-p",
     "--project-id",
     "project_id",
-    required=True,
+    required=False,
     help="Numeric project ID.",
+    type=int,
+)
+@click.option(
+    "-g",
+    "--group-id",
+    "group_id",
+    required=False,
+    help="Numeric group ID.",
     type=int,
 )
 @click.option(
@@ -144,8 +178,10 @@ def create_labels(context, project_id, sub_debug):
     type=str,
 )
 @pass_context
-def create_badges(context, project_id, sub_debug):
-    """Create badges in a GitLab project"""
+def create_badges(context, project_id, group_id, sub_debug):
+    """
+    Create badges in a GitLab project
+    """
 
     if context.banner:
         banner()
@@ -153,4 +189,20 @@ def create_badges(context, project_id, sub_debug):
         debug_manager()
     if context.initial_msg:
         initial_message()
-    labelx_controller(endpoint="badges", project_id=project_id, custom_config_path=None)
+    if project_id and group_id:
+        click.secho(
+            f"[x] Project ID and Group ID can not be used at the same time.", fg="red"
+        )
+        sys.exit(1)
+    if all(v is None for v in [project_id, group_id]):
+        click.secho(f"[x] Either Project ID or Group ID is required.", fg="red")
+        sys.exit(1)
+    if project_id or group_id:
+        logging.debug(f"[$] Project ID: {project_id}")
+        logging.debug(f"[$] Group ID: {group_id}")
+        labelx_controller(
+            endpoint="badges",
+            project_id=project_id,
+            group_id=group_id,
+            custom_config_path=None,
+        )

@@ -2,6 +2,13 @@
 Changelog
 =========
 
+2.2.0 [28.03.2022]
+------------------
+
+* Add group level badges and labels
+* Fix version upgrade bug
+* Update documentation
+
 2.1.1 [19.06.2020]
 ------------------
 

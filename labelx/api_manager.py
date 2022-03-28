@@ -17,7 +17,7 @@ from .settings import generate_endpoints, get_authentication
 
 # Source code meta data
 __author__ = "Dalwar Hossain"
-__email__ = "dalwar23@protonmail.com"
+__email__ = "dalwar23@pm.me"
 
 
 # Define get headers function

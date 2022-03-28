@@ -19,27 +19,36 @@ from .utils import goodbye
 
 # Source code meta data
 __author__ = "Dalwar Hossain"
-__email__ = "dalwar23@protonmail.com"
+__email__ = "dalwar23@pm.me"
 
 
 def labelx_controller(
-    endpoint=None, project_id=None, custom_config_path=None, custom_labels_path=None
+    endpoint=None,
+    project_id=None,
+    group_id=None,
+    custom_config_path=None,
+    custom_labels_path=None,
+    custom_badges_path=None,
 ):
     """
     Label creation controller function
 
     :param endpoint: (str) labels/badges endpoint
     :param project_id: (int) Numeric project number
+    :param group_id: (int) Numeric group number
     :param custom_config_path: (str) custom config path
-    :param custom_labels_path: (str) Custom label information yaml path
+    :param custom_labels_path: (str) Custom label information .yaml file path
+    :param custom_badges_path: (str) Custom badge information .yaml file path
     :returns: (stdout) Output on screen
     """
 
     skipped = []
     api_method = "POST"
-    endpoint_url, host = generate_endpoints(endpoint_type=endpoint, project_id=project_id)
+    endpoint_url, host = generate_endpoints(
+        endpoint_type=endpoint, project_id=project_id, group_id=group_id
+    )
     headers = get_headers()
-    all_data = generate_payload(endpoint_type=endpoint, scm_host=host)
+    all_data = generate_payload(endpoint_type=endpoint, scm_host=host, custom_data_file_path=None)
     for data_key, data_value in all_data.items():
         data_value["name"] = data_key
         try:

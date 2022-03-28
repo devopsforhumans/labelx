@@ -21,7 +21,7 @@ from . import settings
 
 # Source code meta data
 __author__ = "Dalwar Hossain"
-__email__ = "dalwar23@protonmail.com"
+__email__ = "dalwar23@pm.me"
 
 
 # Divider function
@@ -68,8 +68,8 @@ def banner():
 +--------------------------------------------------+
 |                     {package_name}                       |
 +--------------------------------------------------+
-| about: GitLab label creator for issues           |
-| author: {author} ({author_email}) |
+| about: GitLab label/badge creator                |
+| author: {author} ({author_email})          |
 | version: {version}                                   |
 | license: {package_license}           |
 | documentation: https://labelx.readthedocs.io/    |

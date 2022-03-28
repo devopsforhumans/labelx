@@ -17,7 +17,7 @@ from . import config_manager
 
 # Source code meta data
 __author__ = "Dalwar Hossain"
-__email__ = "dalwar23@protonmail.com"
+__email__ = "dalwar23@pm.me"
 
 # Setting parameters
 api_version = "v4"
@@ -78,7 +78,7 @@ def generate_payload(endpoint_type=None, scm_host=None, custom_data_file_path=No
     :param endpoint_type: (str) labels/badges endpoint string
     :param scm_host: (str) Source code management host url
     :param custom_data_file_path: (str) Full Path to Labels (YAML) file
-    :returns: (dict) key value pair of the label name and attributes
+    :returns: (dict) key value pairs of the label name and attributes
     """
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -99,32 +99,35 @@ def generate_payload(endpoint_type=None, scm_host=None, custom_data_file_path=No
 
 
 # Generate Endpoints
-def generate_endpoints(endpoint_type=None, project_id=None, custom_config_path=None):
+def generate_endpoints(
+    endpoint_type=None, project_id=None, group_id=None, custom_config_path=None
+):
     """
     Get API endpoints
 
     :param endpoint_type: (str) labels/badges?
     :param project_id: (int) GitLab Project ID
+    :param group_id: (int) GitLab Group ID
     :param custom_config_path: (str) Configuration file path
     :returns: (str) API endpoint
     """
 
-    if isinstance(project_id, int):
-        if custom_config_path:
-            all_configs = config_manager.load_config(
-                config_file_paths=[custom_config_path]
-            )
-        else:
-            all_configs = config_manager.load_config()
-        protocol = all_configs["login"]["protocol"]
-        host = all_configs["login"]["host"]
-        host_url = f"{protocol}://{host}"
-        endpoint = f"{host_url}/api/{api_version}/projects/{project_id}/{endpoint_type}"
-        logging.debug(f"Endpoint: {endpoint}")
-        return [endpoint, host_url]
+    if custom_config_path:
+        all_configs = config_manager.load_config(config_file_paths=[custom_config_path])
     else:
-        click.secho(f"[x] No project ID found! Provide project ID!", fg="red")
+        all_configs = config_manager.load_config()
+    protocol = all_configs["login"]["protocol"]
+    host = all_configs["login"]["host"]
+    host_url = f"{protocol}://{host}"
+    if isinstance(project_id, int):
+        endpoint = f"{host_url}/api/{api_version}/projects/{project_id}/{endpoint_type}"
+    elif isinstance(group_id, int):
+        endpoint = f"{host_url}/api/{api_version}/groups/{group_id}/{endpoint_type}"
+    else:
+        click.secho(f"[x] No project ID/Group ID found!", fg="red")
         sys.exit(1)
+    logging.debug(f"Endpoint: {endpoint}")
+    return [endpoint, host_url]
 
 
 # Define authentication

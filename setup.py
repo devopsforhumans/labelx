@@ -10,7 +10,7 @@ with open("README.rst") as readme_file:
 with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
-requirements = ["Click==7.1.1", "requests==2.22.0", "colorama==0.4.1", "pyyaml==5.1.1"]
+requirements = ["Click==7.1.1", "requests==2.22.0", "colorama==0.4.1", "pyyaml==5.4"]
 
 setup_requirements = []
 
@@ -18,7 +18,7 @@ test_requirements = ["pytest==5.4.1"]
 
 setup(
     author="Dalwar Hossain",
-    author_email="dalwar23@protonmail.com",
+    author_email="dalwar23@pm.me",
     python_requires=">=3.6",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
@@ -43,6 +43,6 @@ setup(
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/dalwar23/labelxg",
-    version="2.1.1",
+    version="2.2.0",
     zip_safe=False,
 )
