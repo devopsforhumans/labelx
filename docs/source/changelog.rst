@@ -2,7 +2,7 @@
 Changelog
 =========
 
-2.2.0 [28.03.2022]
+2.2.1 [28.03.2022]
 ------------------
 
 * Add group level badges and labels
