@@ -26,6 +26,7 @@ Features
 * Show package information
 * Create labels for GitLab groups/projects
 * Create badges for GitLab groups/projects
+* Custom label/badge from `.yaml` file
 
 Requirements
 ------------
