@@ -2,6 +2,14 @@
 History
 =======
 
+2.3.0 [30.03.2022]
+------------------
+* Updated documentation
+* Added group level support for labels and badges
+* Updated tests
+* Fixed spelling mistakes
+* Minor console output changes
+
 2.2.1 [28.03.2022]
 ------------------
 
