@@ -31,7 +31,7 @@ Requirements
 ------------
 
 * python >= 3.6
-* ``config.yaml`` at ``~/.confing/labelx/``
+* ``config.yaml`` at ``~/.config/labelx/``
 
 .. code-block:: yaml
 
