@@ -21,7 +21,8 @@ setup(
     author_email="dalwar23@pm.me",
     python_requires=">=3.6",
     classifiers=[
-        "Development Status :: 2 - Pre-Alpha",
+        "Development Status :: 4 - Beta",
+        "Environment :: Console",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Natural Language :: English",
@@ -29,6 +30,8 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
     ],
     description="Label Creator for GitLab Projects.",
     entry_points={"console_scripts": ["labelx=labelx.app:mission_control"]},
@@ -43,6 +46,6 @@ setup(
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/dalwar23/labelxg",
-    version="2.2.1",
+    version="2.3.0",
     zip_safe=False,
 )

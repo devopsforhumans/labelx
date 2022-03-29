@@ -7,6 +7,7 @@
 import logging
 import os
 import sys
+import json
 
 # Import external python libraries
 import click
@@ -77,24 +78,29 @@ def generate_payload(endpoint_type=None, scm_host=None, custom_data_file_path=No
 
     :param endpoint_type: (str) labels/badges endpoint string
     :param scm_host: (str) Source code management host url
-    :param custom_data_file_path: (str) Full Path to Labels (YAML) file
+    :param custom_data_file_path: (str) Full Path to Labels/badges (YAML) file
     :returns: (dict) key value pairs of the label name and attributes
     """
 
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    data_file = f"{endpoint_type}.yaml"
-    data_yaml_file = os.path.join(dir_path, data_file)
-    defaults = read_yaml(yaml_file_path=data_yaml_file)
-    logging.debug(f"[$] Defaults (before custom): {defaults}")
-    if endpoint_type == "badges":
-        default_data = mod_defaults(init_dict=defaults, host=scm_host)
+    if custom_data_file_path is None:
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+        data_file = f"{endpoint_type}.yaml"
+        data_yaml_file = os.path.join(dir_path, data_file)
+        builtin_data = read_yaml(yaml_file_path=data_yaml_file)
+        if endpoint_type == "badges":
+            default_data = mod_defaults(init_dict=builtin_data, host=scm_host)
+        else:
+            default_data = builtin_data
+        click.secho(f"[*] Custom {endpoint_type} data not provided. Using builtin data.....", fg="cyan")
+        logging.debug(f"[$] Builtin data: {json.dumps(default_data, indent=4)}")
     else:
-        default_data = defaults
-    if custom_data_file_path:
         custom_data = read_yaml(yaml_file_path=custom_data_file_path)
-        for c_name, c_value in custom_data.items():
-            default_data[c_name] = c_value
-        logging.debug(f"[$] Default data (after custom): {default_data}")
+        if endpoint_type == "badges":
+            default_data = mod_defaults(init_dict=custom_data, host=scm_host)
+        else:
+            default_data = custom_data
+        click.secho(f"[*] Using custom {endpoint_type} data from [{custom_data_file_path}].....", fg="cyan")
+        logging.debug(f"[$] Default data (after custom): {json.dumps(default_data, indent=4)}")
     return default_data
 
 

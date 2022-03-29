@@ -1,0 +1,17 @@
+---
+test_license:
+  link_url: "%{project_path}/LICENSE"
+  image_url: "https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square"
+  position: 0
+test_platform:
+  link_url: "%{project_path}"
+  image_url: "https://img.shields.io/badge/Platform-cc3300?style=flat-square"
+  position: 1
+test_windows:
+  link_url: "%{project_path}"
+  image_url: "https://img.shields.io/badge/Windows-blue?style=flat-square&logo=windows"
+  position: 2
+test_linux:
+  link_url: "%{project_path}"
+  image_url: "https://img.shields.io/badge/Linux-333?style=flat-square&logo=linux"
+  position: 3

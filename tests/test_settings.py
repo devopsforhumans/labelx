@@ -22,7 +22,8 @@ class TestSettings(unittest.TestCase):
 
     def setUp(self, custom_dir=None):
         self.test_file_dir = Path(__file__).parent.absolute()
-        self.test_file_path = self.test_file_dir / "test.yaml"
+        self.test_labels_file_path = self.test_file_dir / "test_labels.yaml"
+        self.test_badges_file_path = self.test_file_dir / "test_badges.yaml"
         self.fake_test_file_path = self.test_file_dir / "fake.yaml"
         self.txt_test_file_path = self.test_file_dir / "test_text_file.txt"
         self.txt_string = """This is a text file
@@ -66,7 +67,7 @@ class TestSettings(unittest.TestCase):
     # read_yaml()
 
     def test_settings_read_yaml_function_works_standalone(self):
-        self.assertIsInstance(read_yaml(yaml_file_path=self.test_file_path), dict)
+        self.assertIsInstance(read_yaml(yaml_file_path=self.test_labels_file_path), dict)
 
     def test_settings_read_yaml_standalone_returns_error_if_file_not_found(self):
         self.assertRaises(FileNotFoundError, read_yaml, self.fake_test_file_path)
@@ -87,7 +88,7 @@ class TestSettings(unittest.TestCase):
     def test_settings_read_custom_file_labels(self):
         self.assertIsInstance(
             generate_payload(
-                endpoint_type="labels", custom_data_file_path=self.test_file_path
+                endpoint_type="labels", custom_data_file_path=self.test_labels_file_path
             ),
             dict,
         )
@@ -113,7 +114,7 @@ class TestSettings(unittest.TestCase):
     def test_settings_read_custom_file_badges(self):
         self.assertIsInstance(
             generate_payload(
-                endpoint_type="badges", custom_data_file_path=self.test_file_path
+                endpoint_type="badges", custom_data_file_path=self.test_badges_file_path
             ),
             dict,
         )

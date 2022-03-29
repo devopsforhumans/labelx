@@ -28,7 +28,7 @@ class TestUtils(unittest.TestCase):
 
     def test_utils_initial_message_prints_a_message(self):
         with TestUtils.captured_output(self) as (out, err):
-            initial_message()
+            initial_message(about_text="Test")
         output = out.getvalue().strip().split("\n")
         self.assertEqual(output[0], "[*] Initializing.....")
 

@@ -27,8 +27,7 @@ def labelx_controller(
     project_id=None,
     group_id=None,
     custom_config_path=None,
-    custom_labels_path=None,
-    custom_badges_path=None,
+    custom_data_file=None,
 ):
     """
     Label creation controller function
@@ -37,8 +36,7 @@ def labelx_controller(
     :param project_id: (int) Numeric project number
     :param group_id: (int) Numeric group number
     :param custom_config_path: (str) custom config path
-    :param custom_labels_path: (str) Custom label information .yaml file path
-    :param custom_badges_path: (str) Custom badge information .yaml file path
+    :param custom_data_file: (str) Custom label/badge information .yaml file path
     :returns: (stdout) Output on screen
     """
 
@@ -48,7 +46,7 @@ def labelx_controller(
         endpoint_type=endpoint, project_id=project_id, group_id=group_id
     )
     headers = get_headers()
-    all_data = generate_payload(endpoint_type=endpoint, scm_host=host, custom_data_file_path=None)
+    all_data = generate_payload(endpoint_type=endpoint, scm_host=host, custom_data_file_path=custom_data_file)
     for data_key, data_value in all_data.items():
         data_value["name"] = data_key
         try:
@@ -60,8 +58,8 @@ def labelx_controller(
             skipped.append(data_key)
             payload = None
         if payload:
-            click.secho(f"[$] Creating {endpoint[:-1]} - ", fg="cyan", nl=False)
-            click.secho(f"[{data_key}]", fg="white", nl=False)
+            click.secho(f"[$] Creating - ", fg="cyan", nl=False)
+            click.secho(f"[{data_key}]", fg="magenta", nl=False)
             click.secho(f" ..... ", fg="yellow", nl=False)
             logging.debug(f"Payload: {payload}")
             api_response = call_api_endpoint(

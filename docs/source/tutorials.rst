@@ -135,6 +135,55 @@ in the project mentioned. Output should be something similar -
    [$] Creating label - [Won't Fix] ..... DONE
    -------------------------------------- Goodbye! ----------------------------------------
 
+Using user defined labels
+-------------------------
+
+.. note::
+   When using user defined labels, the builtin labels will be ignored.
+
+To create user defined labels, use ``-f`` or ``--labels`` option with an argument of a
+valid ``yaml`` file path that contains label information. E.g.
+
+.. code-block:: shell
+
+   labelx create-labels -p 1234 -f ~/labels.yaml
+
+OR
+
+.. code-block:: shell
+
+   labelx create-labels -g 23 --labels ~/my/vey/nested/file/path/to/labels.yaml
+
+**Example labels.yaml file**
+
+.. code-block:: yaml
+
+   Test1:
+     color: "#FF0000"
+     description: A test label
+     description_html: ''
+     text_color: "#FFFFFF"
+     subscribed: false
+     priority: 0
+     is_project_label: true
+   Test2:
+     color: "#0033CC"
+     description: Second test label
+     description_html: ''
+     text_color: "#FFFFFF"
+     subscribed: false
+     priority: 1
+     is_project_label: true
+   Test3:
+     color: "#AD4363"
+     description: Third test label
+     description_html: ''
+     text_color: "#FFFFFF"
+     subscribed: false
+     priority:
+     is_project_label: true
+
+
 Creating Badges
 ---------------
 
@@ -190,3 +239,51 @@ in the project mentioned. Output should be something similar -
    [$] Creating badge - [style] ..... DONE
    [$] Creating badge - [layout] ..... DONE
    -------------------------------------- Goodbye! ----------------------------------------
+
+Using user defined badges
+-------------------------
+
+.. note::
+   When using user defined badges, the builtin badges will be ignored.
+
+To create user defined badges, use ``-f`` or ``--badges`` option with an argument of a
+valid ``yaml`` file path that contains badge information. E.g.
+
+.. code-block:: shell
+
+   labelx create-badges -p 143 -f ~/badges.yaml
+
+OR
+
+.. code-block:: shell
+
+   labelx create-badges -g 23 --badges ~/my/vey/nested/file/path/to/badges.yaml
+
+**Example badges.yaml file**
+
+.. code-block:: yaml
+
+   ---
+   license:
+     link_url: "%{project_path}/LICENSE"
+     image_url: "https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square"
+     position: 0
+   platform:
+     link_url: "%{project_path}"
+     image_url: "https://img.shields.io/badge/Platform-cc3300?style=flat-square"
+     position: 1
+   windows:
+     link_url: "%{project_path}"
+     image_url: "https://img.shields.io/badge/Windows-blue?style=flat-square&logo=windows"
+     position: 2
+   linux:
+     link_url: "%{project_path}"
+     image_url: "https://img.shields.io/badge/Linux-333?style=flat-square&logo=linux"
+     position: 3
+
+.. important::
+   ``%{project_path}`` will translated into the project's path by ``labelx`` for project specific
+   badges only. For groups, It is recommended not to use `<GITLAB PLACEHOLDER TOKENS>`_ like
+   ``%{project_path}`` or ``%{project_id}``.
+
+.. _GITLAB PLACEHOLDER TOKEN: https://docs.gitlab.com/ee/api/group_badges.html#placeholder-tokens

@@ -94,7 +94,7 @@ def pkg_info(context, author):
         show_info(view_type="all")
 
 
-@mission_control.command(short_help="Create labels for issues and merge requests.")
+@mission_control.command(short_help="Create labels.")
 @click.option(
     "-p",
     "--project-id",
@@ -112,6 +112,14 @@ def pkg_info(context, author):
     type=int,
 )
 @click.option(
+    "-f",
+    "--labels",
+    "labels_file",
+    required=False,
+    help="Custom labels file.",
+    type=click.Path(exists=True, file_okay=True, readable=True),
+)
+@click.option(
     "--debug",
     "sub_debug",
     is_flag=True,
@@ -121,9 +129,9 @@ def pkg_info(context, author):
     type=str,
 )
 @pass_context
-def create_labels(context, project_id, group_id, sub_debug):
+def create_labels(context, project_id, group_id, labels_file, sub_debug):
     """
-    Create labels in a GitLab project
+    Create labels in gitLab group or project
     """
 
     if context.banner:
@@ -131,7 +139,7 @@ def create_labels(context, project_id, group_id, sub_debug):
     if context.debug or sub_debug:
         debug_manager()
     if context.initial_msg:
-        initial_message()
+        initial_message(about_text="Create Labels")
     if project_id and group_id:
         click.secho(
             f"[x] Project ID and Group ID can not be used at the same time.", fg="red"
@@ -143,15 +151,17 @@ def create_labels(context, project_id, group_id, sub_debug):
     if project_id or group_id:
         logging.debug(f"[$] Project ID: {project_id}")
         logging.debug(f"[$] Group ID: {group_id}")
+        logging.debug(f"[$] Custom Labels file: {labels_file}")
         labelx_controller(
             endpoint="labels",
             project_id=project_id,
             group_id=group_id,
             custom_config_path=None,
+            custom_data_file=labels_file,
         )
 
 
-@mission_control.command(short_help="Create badges for project.")
+@mission_control.command(short_help="Create badges.")
 @click.option(
     "-p",
     "--project-id",
@@ -169,6 +179,14 @@ def create_labels(context, project_id, group_id, sub_debug):
     type=int,
 )
 @click.option(
+    "-f",
+    "--badges",
+    "badges_file",
+    required=False,
+    help="Custom badges file.",
+    type=click.Path(exists=True, file_okay=True, readable=True),
+)
+@click.option(
     "--debug",
     "sub_debug",
     is_flag=True,
@@ -178,9 +196,9 @@ def create_labels(context, project_id, group_id, sub_debug):
     type=str,
 )
 @pass_context
-def create_badges(context, project_id, group_id, sub_debug):
+def create_badges(context, project_id, group_id, badges_file, sub_debug):
     """
-    Create badges in a GitLab project
+    Create badges in  gitLab group or project
     """
 
     if context.banner:
@@ -188,7 +206,7 @@ def create_badges(context, project_id, group_id, sub_debug):
     if context.debug or sub_debug:
         debug_manager()
     if context.initial_msg:
-        initial_message()
+        initial_message(about_text="Create Badges")
     if project_id and group_id:
         click.secho(
             f"[x] Project ID and Group ID can not be used at the same time.", fg="red"
@@ -200,9 +218,11 @@ def create_badges(context, project_id, group_id, sub_debug):
     if project_id or group_id:
         logging.debug(f"[$] Project ID: {project_id}")
         logging.debug(f"[$] Group ID: {group_id}")
+        logging.debug(f"[$] Custom Badges file: {badges_file}")
         labelx_controller(
             endpoint="badges",
             project_id=project_id,
             group_id=group_id,
+            custom_data_file=badges_file,
             custom_config_path=None,
         )

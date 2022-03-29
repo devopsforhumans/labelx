@@ -24,14 +24,15 @@ Features
 --------
 
 * Show package information
-* Create labels for GitLab projects
-* Create badges for GitLab projects
+* Create labels for GitLab groups/projects
+* Create badges for GitLab groups/projects
+* Custom label/badge from `.yaml` file
 
 Requirements
 ------------
 
 * python >= 3.6
-* ``config.yaml`` at ``~/.confing/labelx/``
+* ``config.yaml`` at ``~/.config/labelx/``
 
 .. code-block:: yaml
 
