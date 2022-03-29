@@ -24,8 +24,8 @@ Features
 --------
 
 * Show package information
-* Create labels for GitLab projects
-* Create badges for GitLab projects
+* Create labels for GitLab groups/projects
+* Create badges for GitLab groups/projects
 
 Requirements
 ------------
