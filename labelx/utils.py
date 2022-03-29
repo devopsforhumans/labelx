@@ -50,14 +50,18 @@ def divider(text="", char="-"):
 
 
 # Initial message
-def initial_message():
-    """This function shows the initialization message"""
+def initial_message(about_text=None):
+    """
+    This function shows the initialization message
+
+    :param about_text: (str) the text to show in divider
+    """
 
     click.secho(f"[*] Initializing.....", fg="cyan")
     click.secho(
         f"[*] Please use 'labelx --help' to see all available options", fg="cyan"
     )
-    divider(f"[{package_name}]")
+    divider(f"[{about_text}]")
 
 
 # Banner
