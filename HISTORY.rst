@@ -2,6 +2,10 @@
 History
 =======
 
+2.3.1 [30.03.2022]
+------------------
+* Fix dependency issue in setup.py `Issue #13 <https://github.com/dalwar23/labelx/issues/13>`_
+
 2.3.0 [30.03.2022]
 ------------------
 * Updated documentation
