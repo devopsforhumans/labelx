@@ -10,8 +10,11 @@ with open("README.rst") as readme_file:
 with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
-requirements = ["Click >= 8.04", "requests >= 2.27.1", "colorama >= 0.4.4", "pyyaml >= 6.0.0"]
+with open("requirements.txt") as requirements_file:
+    requirements = requirements_file.read().split("\n")
 
+with open("requirements_dev.txt") as requirements_dev_file:
+    dev_requirements = requirements_dev_file.read().split("\n")
 
 test_requirements = ["pytest==5.4.1"]
 
@@ -44,7 +47,10 @@ setup(
     setup_requires=[],
     test_suite="tests",
     tests_require=test_requirements,
-    version="2.3.0",
     url="https://github.com/dalwar23/labelx",
+    version="2.3.1",
+    extras_require={
+        "dev": test_requirements + dev_requirements,
+    },
     zip_safe=False,
 )
