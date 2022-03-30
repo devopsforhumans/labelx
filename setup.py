@@ -12,7 +12,6 @@ with open("HISTORY.rst") as history_file:
 
 requirements = ["Click >= 8.04", "requests >= 2.27.1", "colorama >= 0.4.4", "pyyaml >= 6.0.0"]
 
-setup_requirements = []
 
 test_requirements = ["pytest==5.4.1"]
 
@@ -42,10 +41,10 @@ setup(
     keywords="labelx",
     name="labelx",
     packages=find_packages(include=["labelx", "labelx.*"]),
-    setup_requires=setup_requirements,
+    setup_requires=[],
     test_suite="tests",
     tests_require=test_requirements,
-    url="https://github.com/dalwar23/labelxg",
     version="2.3.0",
+    url="https://github.com/dalwar23/labelx",
     zip_safe=False,
 )
