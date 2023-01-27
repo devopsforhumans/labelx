@@ -7,7 +7,7 @@ Copyright: Dalwar Hossain
 pipeline {
     agent any
     environment {
-        PYTHON_INTERPRETER = "python3.6"
+        PYTHON_INTERPRETER = "python3.8"
         REPOSITORY_NAME = sh (script: 'echo $(echo `git config --get remote.origin.url` | rev | cut -d "/" -f 1 | cut -d "." -f 2 | rev)', returnStdout: true).trim()
     }
     options {
