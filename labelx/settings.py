@@ -91,7 +91,10 @@ def generate_payload(endpoint_type=None, scm_host=None, custom_data_file_path=No
             default_data = mod_defaults(init_dict=builtin_data, host=scm_host)
         else:
             default_data = builtin_data
-        click.secho(f"[*] Custom {endpoint_type} data not provided. Using builtin data.....", fg="cyan")
+        click.secho(
+            f"[*] Custom {endpoint_type} data not provided. Using builtin data.....",
+            fg="cyan",
+        )
         logging.debug(f"[$] Builtin data: {json.dumps(default_data, indent=4)}")
     else:
         custom_data = read_yaml(yaml_file_path=custom_data_file_path)
@@ -99,8 +102,13 @@ def generate_payload(endpoint_type=None, scm_host=None, custom_data_file_path=No
             default_data = mod_defaults(init_dict=custom_data, host=scm_host)
         else:
             default_data = custom_data
-        click.secho(f"[*] Using custom {endpoint_type} data from [{custom_data_file_path}].....", fg="cyan")
-        logging.debug(f"[$] Default data (after custom): {json.dumps(default_data, indent=4)}")
+        click.secho(
+            f"[*] Using custom {endpoint_type} data from [{custom_data_file_path}].....",
+            fg="cyan",
+        )
+        logging.debug(
+            f"[$] Default data (after custom): {json.dumps(default_data, indent=4)}"
+        )
     return default_data
 
 
