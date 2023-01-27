@@ -123,7 +123,7 @@ pipeline {
         }
         stage ('Create Artifacts') {
             environment {
-                PROJECT_VERSION = sh (script: 'awk -F "=" '/version/ {print $2}' pyproject.toml | tr -d ' " '', returnStdout: true).trim()
+                PROJECT_VERSION = sh (script: 'awk -F "=" '/version/ {print $2}' pyproject.toml | tr -d ' " \n'', returnStdout: true).trim()
             }
             steps {
                 sh '''
