@@ -1,6 +1,6 @@
 [project]
 name = "labelx"
-version = "2.3.1"
+version = "2.3.2"
 authors = [
     {name="Dalwar Hossain", email="dalwar23@pm.me"},
 ]
