@@ -122,14 +122,11 @@ pipeline {
             }
         }
         stage ('Create Artifacts') {
-            environment {
-                PROJECT_VERSION = sh (script: 'echo $(echo `awk -F "=" '/version/ {print $2}' pyproject.toml` | tr -d ' " ')', returnStdout: true).trim()
-            }
             steps {
                 sh '''
                 if [[ -d "${WORKSPACE}/docs/build/html/" ]]; then
                     cd "${WORKSPACE}/docs/build/html/"
-                    tar -vczf "${WORKSPACE}/${REPOSITORY_NAME}-${BRANCH_NAME}-${PROJECT_VERSION}-${BUILD_NUMBER}.tar.gz" *
+                    tar -vczf "${WORKSPACE}/${REPOSITORY_NAME}-${BRANCH_NAME}.tar.gz" *
                 fi
                 '''
             }
