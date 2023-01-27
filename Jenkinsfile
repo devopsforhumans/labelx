@@ -39,7 +39,7 @@ pipeline {
                 sh "virtualenv --always-copy -p ${PYTHON_INTERPRETER} venv"
                 sh '''
                 source venv/bin/activate
-                pip install --upgrade pip setuptools wheel
+                pip install --upgrade pip setuptools wheel build
                 pip --version
                 pip list
                 '''
