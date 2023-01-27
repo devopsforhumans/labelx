@@ -79,15 +79,6 @@ pipeline {
         }
         stage ('Build') {
             parallel {
-                stage ('Build Source') {
-                    steps {
-                        sh '''
-                        source venv/bin/activate
-                        python setup.py build
-                        deactivate
-                        '''
-                    }
-                }
                 stage ('Build HTML') {
                     steps {
                         sh '''
