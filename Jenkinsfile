@@ -28,7 +28,7 @@ pipeline {
                 }
                 stage ('Check Setup') {
                     steps {
-                        sh 'test -f setup.py'
+                        sh 'test -f pyproject.toml'
                         sh 'echo \$?'
                     }
                 }
