@@ -41,6 +41,7 @@ pipeline {
                 source venv/bin/activate
                 pip install --upgrade pip setuptools wheel
                 pip --version
+                pip list
                 '''
             }
         }
