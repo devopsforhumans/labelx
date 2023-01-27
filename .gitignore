@@ -107,3 +107,6 @@ ENV/
 
 # Discard test_results
 *.xml
+
+# MacOS
+.DS_Store

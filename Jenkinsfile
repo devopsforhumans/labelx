@@ -77,7 +77,7 @@ pipeline {
                 }
             }
         }
-        stage ('Build') {
+        stage ('Build Docs') {
             parallel {
                 stage ('Build HTML') {
                     steps {
@@ -113,34 +113,12 @@ pipeline {
             }
         }
         stage ('Package') {
-            parallel {
-                stage ('Source') {
-                    steps {
-                        sh '''
-                        source venv/bin/activate
-                        python setup.py egg_info --tag-build="-${BRANCH_NAME}" sdist
-                        deactivate
-                        '''
-                    }
-                }
-                stage ('Wheel') {
-                    steps {
-                        sh '''
-                        source venv/bin/activate
-                        python setup.py egg_info --tag-build="-${BRANCH_NAME}" bdist_wheel
-                        deactivate
-                        '''
-                    }
-                }
-                stage ('Egg') {
-                    steps {
-                        sh '''
-                        source venv/bin/activate
-                        python setup.py egg_info --tag-build="-${BRANCH_NAME}" bdist_egg
-                        deactivate
-                        '''
-                    }
-                }
+            steps {
+                sh '''
+                source venv/bin/activate
+                python -m build
+                deactivate
+                '''
             }
         }
         stage ('Create Artifacts') {
