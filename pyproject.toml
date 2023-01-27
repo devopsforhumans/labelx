@@ -33,7 +33,7 @@ license = {file = "LICENSE"}
 "documentation" = "https://labelx.readthedocs.io/"
 
 [project.optional-dependencies]
-test = ["pytest"]
+test = ["pytest == 7.2.1"]
 
 [project.entry-points."console_scripts"]
 labelx = "labelx.app:mission_control"
