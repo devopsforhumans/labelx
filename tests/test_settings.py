@@ -67,7 +67,9 @@ class TestSettings(unittest.TestCase):
     # read_yaml()
 
     def test_settings_read_yaml_function_works_standalone(self):
-        self.assertIsInstance(read_yaml(yaml_file_path=self.test_labels_file_path), dict)
+        self.assertIsInstance(
+            read_yaml(yaml_file_path=self.test_labels_file_path), dict
+        )
 
     def test_settings_read_yaml_standalone_returns_error_if_file_not_found(self):
         self.assertRaises(FileNotFoundError, read_yaml, self.fake_test_file_path)

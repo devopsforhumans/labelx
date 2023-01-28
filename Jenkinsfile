@@ -7,7 +7,7 @@ Copyright: Dalwar Hossain
 pipeline {
     agent any
     environment {
-        PYTHON_INTERPRETER = "python3.6"
+        PYTHON_INTERPRETER = "python3.8"
         REPOSITORY_NAME = sh (script: 'echo $(echo `git config --get remote.origin.url` | rev | cut -d "/" -f 1 | cut -d "." -f 2 | rev)', returnStdout: true).trim()
     }
     options {
@@ -28,7 +28,7 @@ pipeline {
                 }
                 stage ('Check Setup') {
                     steps {
-                        sh 'test -f setup.py'
+                        sh 'test -f pyproject.toml'
                         sh 'echo \$?'
                     }
                 }
@@ -39,8 +39,9 @@ pipeline {
                 sh "virtualenv --always-copy -p ${PYTHON_INTERPRETER} venv"
                 sh '''
                 source venv/bin/activate
-                pip install --upgrade pip setuptools wheel
+                pip install --upgrade pip setuptools wheel build
                 pip --version
+                pip list
                 '''
             }
         }
@@ -76,17 +77,8 @@ pipeline {
                 }
             }
         }
-        stage ('Build') {
+        stage ('Build Docs') {
             parallel {
-                stage ('Build Source') {
-                    steps {
-                        sh '''
-                        source venv/bin/activate
-                        python3 setup.py build
-                        deactivate
-                        '''
-                    }
-                }
                 stage ('Build HTML') {
                     steps {
                         sh '''
@@ -121,45 +113,20 @@ pipeline {
             }
         }
         stage ('Package') {
-            parallel {
-                stage ('Source') {
-                    steps {
-                        sh '''
-                        source venv/bin/activate
-                        python3 setup.py egg_info --tag-build="-${BRANCH_NAME}" sdist
-                        deactivate
-                        '''
-                    }
-                }
-                stage ('Wheel') {
-                    steps {
-                        sh '''
-                        source venv/bin/activate
-                        python3 setup.py egg_info --tag-build="-${BRANCH_NAME}" bdist_wheel
-                        deactivate
-                        '''
-                    }
-                }
-                stage ('Egg') {
-                    steps {
-                        sh '''
-                        source venv/bin/activate
-                        python3 setup.py egg_info --tag-build="-${BRANCH_NAME}" bdist_egg
-                        deactivate
-                        '''
-                    }
-                }
+            steps {
+                sh '''
+                source venv/bin/activate
+                python -m build
+                deactivate
+                '''
             }
         }
         stage ('Create Artifacts') {
-            environment {
-                PROJECT_VERSION = sh (script: 'python3 setup.py --version', returnStdout: true).trim()
-            }
             steps {
                 sh '''
                 if [[ -d "${WORKSPACE}/docs/build/html/" ]]; then
                     cd "${WORKSPACE}/docs/build/html/"
-                    tar -vczf "${WORKSPACE}/${REPOSITORY_NAME}-${BRANCH_NAME}-${PROJECT_VERSION}-${BUILD_NUMBER}.tar.gz" *
+                    tar -vczf "${WORKSPACE}/${REPOSITORY_NAME}-${BRANCH_NAME}.tar.gz" *
                 fi
                 '''
             }

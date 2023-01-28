@@ -46,7 +46,9 @@ def labelx_controller(
         endpoint_type=endpoint, project_id=project_id, group_id=group_id
     )
     headers = get_headers()
-    all_data = generate_payload(endpoint_type=endpoint, scm_host=host, custom_data_file_path=custom_data_file)
+    all_data = generate_payload(
+        endpoint_type=endpoint, scm_host=host, custom_data_file_path=custom_data_file
+    )
     for data_key, data_value in all_data.items():
         data_value["name"] = data_key
         try:

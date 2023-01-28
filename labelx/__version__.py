@@ -5,6 +5,6 @@
 __package_name__ = "labelx"
 __author__ = "Dalwar Hossain"
 __author_email = "dalwar23@pm.me"
-__version__ = "2.3.1"
+__version__ = "2.3.2"
 __copyright__ = "Copyright 2022, Dalwar Hossain"
 __license__ = "GNU General Public License v3"
